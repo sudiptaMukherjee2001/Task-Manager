@@ -17,15 +17,14 @@ const TaskHandeling = () => {
     const saveTask = (e) => {
         e.preventDefault();
         setTasklist(prev => [...prev, value]);
-        console.log("This is task one");
+        // console.log("This is task one");
     }
     /*  Function to handle the input */
     const handleInputChange = (e) => {
         setvalue(e.target.value)
 
     }
-    console.log("value", value);
-    console.log("taskList", taskList);
+
     return (
         <HeroSection>
             {/*  Title and Total task count  */}

@@ -6,6 +6,6 @@ export const Tasks = styled(Box)(({ theme }) => ({
 }))
 
 export const CustomTypography = styled(Typography)(({ theme }) => ({
-    border: "2px solid red",
+    // border: "2px solid red",
     marginBottom: "0.6rem"
 }))
