@@ -1,18 +1,20 @@
 /* React imports */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 /* style import */
 import { CustomTypography, Tasks } from '../Stlye/AllTaskStyle';
 /*Mui imports  */
 import { Typography, Checkbox, Grid } from '@mui/material';
 /* Context imports */
-import { ref, set } from "firebase/database";
-import { db } from '../utils/firebase';
+// import { ref, set } from "firebase/database";
+// import { db } from '../utils/firebase';
+import { useFirebase } from '../context/firebaseFunction';
 
 const AllTask = ({ taskList }) => {
     const [checkedTasks, setCheckedTasks] = useState({});
     const [checkedBoxValue, setcheckedBoxValue] = useState({});//This one hold the active checkbox value
-
+    const firebase = useFirebase();
+    console.log("firebase hook", firebase);
     /* Function  to handle checkboxes */
     const handleCheckboxChange = (taskId) => {
         console.log("taskId", taskId);
@@ -34,11 +36,13 @@ const AllTask = ({ taskList }) => {
 
     };
 
-    //  store data into firebase database
-    set(ref(db, '/task'), {
-        checkedBoxValue
+    /*   store data into firebase database */
+    firebase.storeDataIntoFirebase(checkedBoxValue, '/today' + new Date().getDate());
 
-    });
+    // set(ref(db, '/task'), {
+    //     checkedBoxValue
+
+    // });
 
     // console.log("checkedBoxValue", checkedBoxValue);
     // console.log("checkedTasks", checkedTasks);
