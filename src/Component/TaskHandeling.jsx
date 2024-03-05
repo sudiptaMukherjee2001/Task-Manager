@@ -1,46 +1,90 @@
 /* React imports */
 import React, { useState } from 'react'
 /* Component imports */
-import AllTask from './AllTask';
+import Navbar from './Navbar';
 /* Style component */
-import { CustomTextfield, HeroSection, InputContainer, TaskContainer } from '../Stlye/HeroSetionStyle'
+import {
+    CustomTextfield,
+    HeroSection,
+    InputContainer,
+
+} from '../Stlye/HeroSetionStyle'
+import {
+    TaskContainer, AllTaskWarpper
+} from '../Stlye/AllTaskStyle'
 /* Mui imports */
-import { Box, Grid, Typography, Checkbox } from '@mui/material'
-import Divider from '@mui/material/Divider';
+import { Box, Grid, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
+import Newtask from './Newtask';
+
+
 
 const TaskHandeling = () => {
-    const [isTaskPresnt, setisTaskPresnt] = useState(true);
-    const [value, setvalue] = useState('');
-    const [taskList, setTasklist] = useState([])
+    /*     const [isTaskPresnt, setisTaskPresnt] = useState(true);
+        const [value, setvalue] = useState('');
+        const [taskList, setTasklist] = useState([]) */
     /*  Function to add task */
-    const saveTask = (e) => {
-        e.preventDefault();
-        setTasklist(prev => [...prev, value]);
-        // console.log("This is task one");
-    }
+    /*     const saveTask = (e) => {
+            e.preventDefault();
+            setTasklist(prev => [...prev, value]);
+           
+        } */
     /*  Function to handle the input */
-    const handleInputChange = (e) => {
-        setvalue(e.target.value)
+    /*  const handleInputChange = (e) => {
+         setvalue(e.target.value)
+ 
+     } */
+    const navLinkText = ["All task", "Completed task", "Top priority task", "Statistics"]
 
-    }
+
 
     return (
         <HeroSection>
-            {/*  Title and Total task count  */}
+            {/*  Title and add new task modal  */}
             <Grid container>
-                <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="h3" color="initial" className='task_title'>Today&apos;s agenda</Typography>
-                </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12} >
-                    <Typography variant="h5" color="initial" className='task_count' >No of today&apos;s tasks: {taskList.length}</Typography>
+                    <TaskContainer className='task_container_header'>
+                        <Typography variant="h4" color="initial" className='task_title' sx={{ color: "#0f172a" }}>todo</Typography>
+                        <AddIcon fontSize='medium' sx={{ color: "#0f172a", cursor: "pointer" }} />
+                    </TaskContainer>
                 </Grid>
             </Grid>
-            <Divider color="#0F172A" variant="middle" />
+
+
+            <Grid container height={"100%"}>
+                {/* Left side navigation bar */}
+                <Grid item xs={12} sm={12} md={3} lg={3} >
+                    <Navbar navLinkText={navLinkText} />
+                </Grid>
+                {/* right side content */}
+                {/* <Box height={"100%"}> */}
+
+                <Grid item xs={12} sm={12} md={9} lg={9} height={"100%"}>
+                    {/* This container will contain all the tasks */}
+
+                    <AllTaskWarpper
+                        flex={true}
+                        flexWrap={true}
+                        margin={true}
+                        height={true}
+                        padding={true}
+                        width={true}
+                        className='AllTaskWarpper'
+                    // border={"2px solid red"}
+
+                    >
+
+                        <Newtask />
+                    </AllTaskWarpper>
+                </Grid>
+                {/* </Box> */}
+            </Grid>
+
+            {/* <Divider color="#0F172A" variant="middle" /> */}
             {/* Add  new tasks section  */}
-            <TaskContainer>
-                {/* Input field starts from here   */}
-                <Grid container>
+            {/* <TaskContainer> */}
+            {/* Input field starts from here   */}
+            {/* <Grid container>
                     <Grid item xs={11} sm={8} md={8} lg={5}>
                         <InputContainer>
                             <AddIcon fontSize='medium' sx={{ color: "#e2e8f0", cursor: "pointer" }} onClick={saveTask} />
@@ -52,22 +96,22 @@ const TaskHandeling = () => {
                             />
                         </InputContainer>
                     </Grid>
-                </Grid>
-                {/* Input field ends from here   */}
-                {/* Add Task with  checkboxes and crud features*/}
-                {
-                    isTaskPresnt ?
-                        <>
-                            {/* <AllTask /> */}
-                            <AllTask taskList={taskList} />
+                </Grid> */}
+            {/* Input field ends from here   */}
+            {/* Add Task with  checkboxes and crud features*/}
+            {
+                // isTaskPresnt ?
+                //     <>
+                //         {/* <AllTask /> */}
+                //         <AllTask taskList={taskList} />
 
-                        </>
-                        : "There is no task  added yet."
-                }
-            </TaskContainer>
+                //     </>
+                //     : "There is no task  added yet."
+            }
+            {/* </TaskContainer> */}
 
 
-        </HeroSection>
+        </HeroSection >
     )
 }
 
