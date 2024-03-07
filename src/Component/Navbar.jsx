@@ -25,7 +25,7 @@ const Navbar = ({ navLinkText, showCorrectComp, animatedNavPageOpen, setanimated
                 {
                     navLinkText.map((item, ind) => {
                         return (
-                            <Typography variant="h5" key={ind} color="#0f172a" className='navLink' onClick={() => getCurrComp(item)}>
+                            <Typography fontFamily="Rubik" fontWeight={400} fontSize={"1.5rem"} key={ind} color="#0f172a" className='navLink' onClick={() => getCurrComp(item)}>
                                 {item}
 
                             </Typography>
@@ -48,7 +48,7 @@ const Navbar = ({ navLinkText, showCorrectComp, animatedNavPageOpen, setanimated
                             ease: [0, 0.91, 0.3, 4.01],
                             scale: {
                                 type: "spring",
-                                damping: 10,
+                                damping: 18,
                                 stiffness: 100,
                                 restDelta: 0.001
                             }
@@ -59,7 +59,7 @@ const Navbar = ({ navLinkText, showCorrectComp, animatedNavPageOpen, setanimated
                             {
                                 navLinkText.map((item, ind) => {
                                     return (
-                                        <Typography variant="h4" key={ind} color="#e2e8f0" className='navLink' onClick={() => getCurrComp(item)}>
+                                        <Typography fontFamily="Rubik" fontWeight={400} fontSize={"2rem"} key={ind} color="#e2e8f0" className='navLink' onClick={() => getCurrComp(item)}>
                                             {item}
 
                                         </Typography>

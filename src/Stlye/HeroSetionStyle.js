@@ -2,10 +2,10 @@
 import { Box, styled, Button, TextField } from '@mui/material'
 
 export const HeroSection = styled(Box)({
-    backdropFilter: ' blur(0px) saturate(135%)',
+    // backdropFilter: ' blur(0px) saturate(135%)',
     // - webkit - backdrop - filter: blur(0px) saturate(135 %);
     // backgroundColor: '#ffff',
-    backgroundColor: 'rgb(255 255 255 / 40%)',
+    // backgroundColor: 'rgb(255 255 255 / 40%)',
     borderRadius: '10px',
     // border: ' 1.3px solid #4b5563',
     height: "96vh",

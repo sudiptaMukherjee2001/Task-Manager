@@ -31,10 +31,15 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
             onClose={handleCloseDialogBox}
             aria-labelledby="customized-dialog-title"
             open={openDialogBox}
+
             sx={{
                 '.MuiDialog-paper': {
-                    minWidth: '48vw',
-                    maxHeight: '80vh',
+                    minWidth: '50vw',
+                    // maxHeight: '70vh',
+                    "@media screen and (max-width:800px)": {
+                        minWidth: '96vw',
+                        maxHeight: '60vh',
+                    }
 
                 }
 
@@ -45,21 +50,29 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                 justifyContent={"space-between"}
             >
 
-                <Button id="customized-dialog-title" sx={{ m: 0, p: 2 }} onClick={handleCloseDialogBox} >
-                    Cancel
+                <Button id="customized-dialog-title" sx={{ m: 0, p: 2 }} disableFocusRipple={true} disableRipple={true} onClick={handleCloseDialogBox} >
+                    <Typography fontSize={"1.1rem"} fontFamily="Rubik" fontWeight={600} color="#0f172a" >Cancel</Typography>
                 </Button>
-                <Button variant="contained" sx={{
+                <Button variant="outlined" disableFocusRipple={true} disableRipple={true} sx={{
                     position: 'absolute',
                     right: 8,
                     top: 8,
-                    background: (theme) => theme.palette.grey[500],
+                    border: "1px solid #0f172a !important",
+                    paddingInline: "2rem",
+
+                    "&:hover": { // Apply hover effect directly to the Button
+                        borderColor: "#0f172a !important",
+
+                    },
+
+
 
                 }}>
-                    Add
+                    <Typography fontSize={"1.1rem"} fontFamily="Rubik" fontWeight={600} color="#0f172a" >Add task</Typography>
                 </Button>
             </Box>
             <DialogContent dividers>
-                <Typography variant="h6" color="#0f172a" mb={"0.2rem"}>Task name</Typography>
+                <Typography variant="h6" fontFamily="Rubik" color="#0f172a" mb={"0.2rem"}>Task name</Typography>
                 {/* <TextField variant="filled" label="Title" color="default" focused fullWidth size='medium' /> */}
                 <TextField variant="outlined" size='small' sx={{
                     ".MuiOutlinedInput-notchedOutline": {
@@ -77,7 +90,7 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                     fullWidth
                     focused
                 />
-                <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"}>Assign Date and time</Typography>
+                <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"} fontFamily="Rubik">Assign Date and time</Typography>
                 <TextField variant="outlined" size='small' sx={{
                     ".MuiOutlinedInput-notchedOutline": {
                         // color: "#000"
@@ -94,11 +107,11 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                     fullWidth
                     focused
                 />
-                <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"}>Priority</Typography>
+                <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"} fontFamily="Rubik">Priority</Typography>
 
                 <Stack direction="row" spacing={1}>
-                    <Chip label="High" onClick={handleSelectPriority} sx={{ color: "#f1f5f9", bgcolor: "red", borderRadius: "8px", height: "28px" }} />
-                    <Chip label="Medium" onClick={handleSelectPriority} sx={{ color: "#65a30d", bgcolor: "#d9f99d", borderRadius: "8px", height: "28px" }} />
+                    <Chip label="High" onClick={handleSelectPriority} sx={{ fontFamily: "Rubik", color: "#f1f5f9", bgcolor: "red", borderRadius: "8px", height: "28px" }} />
+                    <Chip label="Medium" onClick={handleSelectPriority} sx={{ fontFamily: "Rubik", color: "#65a30d", bgcolor: "#d9f99d", borderRadius: "8px", height: "28px" }} />
                 </Stack>
             </DialogContent>
 

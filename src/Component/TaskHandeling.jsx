@@ -29,7 +29,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import Fab from '@mui/material/Fab';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const TaskHandeling = () => {
 
@@ -58,8 +58,15 @@ const TaskHandeling = () => {
                 <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={12} >
                         <TaskContainer className='task_container_header'>
-                            <Typography variant="h4" color="initial" className='task_title' sx={{ color: "#0f172a" }}>todo.</Typography>
-                            <AddIcon fontSize='medium' sx={{ color: "#0f172a", cursor: "pointer" }} onClick={handleClickOpenDialogBox} />
+                            <Typography variant="h4" color="initial" className='task_title' sx={{
+                                color: "#0f172a",
+                                // border: "2px solid",
+                                display: "flex",
+                                alignItems: "end",
+                                // columnGap: "0.1rem"
+                                fontFamily: "Rubik"
+                            }}>todo<FiberManualRecordIcon sx={{ fontSize: "15px" }} /> </Typography>
+                            <AddIcon fontSize='large' sx={{ color: "#0f172a", cursor: "pointer" }} onClick={handleClickOpenDialogBox} />
                         </TaskContainer>
                     </Grid>
                 </Grid>
@@ -106,7 +113,7 @@ const TaskHandeling = () => {
 
                     <FloatingBtn >
 
-                        <Fab size="medium" color="secondary" aria-label="add">
+                        <Fab size="medium" aria-label="add" disableFocusRipple={true} disableRipple={true} sx={{ color: "whitesmoke", background: "black" }}>
                             {/* CloseIcon */}
                             {animatedNavPageOpen ? <CloseIcon onClick={handelOpenAnimatedNavPage} /> : <AddIcon onClick={handelOpenAnimatedNavPage} />}
 

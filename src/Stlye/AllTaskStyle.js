@@ -23,6 +23,8 @@ export const TaskBox = styled(Box)({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    boxShadow: `2px 0px 5px rgb(255 255 255 / 54%)`,
+
     // flexWrap: "wrap",
     ".taskBoxHeader": {
         display: "flex",

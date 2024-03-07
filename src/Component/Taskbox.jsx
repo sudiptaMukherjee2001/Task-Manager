@@ -28,21 +28,21 @@ const Taskbox = ({ allTaskSection }) => {
         <TaskBox >
             {/* TaskBox Header */}
             <Box className="taskBoxHeader">
-                <Typography className="taskBoxHeaderTitle">
-                    ALgebra
+                <Typography className="taskBoxHeaderTitle" fontFamily="Rubik" variant="h5">
+                    Algebra
                 </Typography>
                 <MoreHorizIcon sx={{ color: "#0f172a", cursor: "pointer" }} onClick={handleOpenMenu} />
             </Box>
             {/* Task assign date */}
             <Box className="assignDate">
-                <Typography>
+                <Typography fontFamily="Rubik" fontWeight={"500"}>
                     Assign Date : 17/06/2021
                 </Typography>
 
             </Box>
             {/* Task priority */}
             <Box className="priority" display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-                <Chip label="High" sx={{ color: "#f1f5f9", bgcolor: "red", borderRadius: "8px", height: "28px" }} />
+                <Chip label="High" sx={{ color: "#f1f5f9", bgcolor: "red", borderRadius: "8px", height: "28px", fontFamily: "Rubik" }} />
                 {
                     allTaskSection === "All task" ?
                         <Box display={'flex'} alignItems={"center"}>
