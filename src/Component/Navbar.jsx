@@ -4,35 +4,81 @@ import PropTypes from 'prop-types';
 /* Component imports */
 
 /* Style component */
-import { SidenavContainer } from '../Stlye/SidenavStyle'
+import { AnimatedNavbar, SidenavContainer } from '../Stlye/SidenavStyle'
 /* Mui imports */
-import { Typography } from '@mui/material'
+import { Typography, useMediaQuery } from '@mui/material'
 
-const Navbar = ({ navLinkText }) => {
-    console.log('====================================');
-    console.log(navLinkText, "navLinkText");
-    console.log('====================================');
+/* Framer motion import*/
+import { motion } from "framer-motion";
+
+
+const Navbar = ({ navLinkText, showCorrectComp, animatedNavPageOpen, setanimatedNavPageOpen }) => {
+    const isMobile = useMediaQuery('(max-width:900px)');
+
+    const getCurrComp = (item) => {
+        showCorrectComp(item)
+        setanimatedNavPageOpen(false)
+    }
     return (
-        <SidenavContainer>
+        <>
+            <SidenavContainer>
+                {
+                    navLinkText.map((item, ind) => {
+                        return (
+                            <Typography variant="h5" key={ind} color="#0f172a" className='navLink' onClick={() => getCurrComp(item)}>
+                                {item}
+
+                            </Typography>
+
+                        )
+                    })
+                }
+            </SidenavContainer>
             {
-                navLinkText.map((item, ind) => {
-                    return (
-                        <Typography variant="h5" key={ind} color="#0f172a" className='navLink'>
-                            {item}
+                isMobile && animatedNavPageOpen ?
 
-                        </Typography>
+                    <motion.div
+                        // initial={{ opacity: 0, x: "100%", scale: 0.5 }}
+                        // animate={{ opacity: 1, x: 0, scale: 1, }}
+                        initial={{ opacity: 0, y: "-100%", scale: 0.5 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        style={{ position: "relative", zIndex: "100" }}
+                        transition={{
+                            duration: 0.2,
+                            ease: [0, 0.91, 0.3, 4.01],
+                            scale: {
+                                type: "spring",
+                                damping: 10,
+                                stiffness: 100,
+                                restDelta: 0.001
+                            }
+                        }}
 
-                    )
-                })
+                    >
+                        <AnimatedNavbar>
+                            {
+                                navLinkText.map((item, ind) => {
+                                    return (
+                                        <Typography variant="h4" key={ind} color="#e2e8f0" className='navLink' onClick={() => getCurrComp(item)}>
+                                            {item}
+
+                                        </Typography>
+
+                                    )
+                                })
+                            }
+                        </AnimatedNavbar>
+                    </motion.div>
+
+                    : null
             }
-
-
-
-
-        </SidenavContainer>
+        </>
     )
 }
 Navbar.propTypes = {
-    navLinkText: PropTypes.array
+    navLinkText: PropTypes.array,
+    showCorrectComp: PropTypes.func,
+    animatedNavPageOpen: PropTypes.any,
+    setanimatedNavPageOpen: PropTypes.func
 }
 export default Navbar

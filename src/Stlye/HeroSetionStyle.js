@@ -3,13 +3,13 @@ import { Box, styled, Button, TextField } from '@mui/material'
 
 export const HeroSection = styled(Box)({
     backdropFilter: ' blur(0px) saturate(135%)',
-    // -webkit-backdrop-filter: blur(0px) saturate(135%);
-    backgroundColor: '#ffff',
-    // backgroundColor: 'rgb(255 255 255 / 10%)',
+    // - webkit - backdrop - filter: blur(0px) saturate(135 %);
+    // backgroundColor: '#ffff',
+    backgroundColor: 'rgb(255 255 255 / 40%)',
     borderRadius: '10px',
-    border: ' 1.3px solid #4b5563',
+    // border: ' 1.3px solid #4b5563',
     height: "96vh",
-    width: "88%",
+    width: "97%",
     margin: "auto",
     overflowY: "scroll",
 
@@ -38,6 +38,14 @@ export const HeroSection = styled(Box)({
     }
 
 });
+
+export const FloatingBtn = styled(Box)(({ theme }) => ({
+    position: "absolute",
+    // border: "2px solid red",
+    bottom: "20px",
+    right: "30px"
+
+}))
 
 export const InputContainer = styled(Box)({
     display: "flex",

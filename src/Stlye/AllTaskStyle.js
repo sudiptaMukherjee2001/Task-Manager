@@ -6,6 +6,12 @@ export const TaskContainer = styled(Box)({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    [" @media (max-width: 800px)"]: {
+        paddingInline: "1rem"
+
+
+
+    }
 
 });
 export const TaskBox = styled(Box)({
@@ -39,9 +45,10 @@ export const AllTaskWarpper = styled(Box)(({ theme, ...props }) => ({
     flexWrap: `${props.flexWrap ? "wrap" : "none"}`,
     gap: `${props.gap ? "1rem" : "none"}`,
     margin: `${props.margin ? "auto" : "none"}`,
-    height: `${props.height ? "95%" : "none"}`,
-    // border: "2px solid red",
+    height: `${props.height ? "100%" : "none"}`,
     overflowY: "scroll",
+    // border: "2px solid red",
+
     "::-webkit-scrollbar": {
         display: "none"
     },
