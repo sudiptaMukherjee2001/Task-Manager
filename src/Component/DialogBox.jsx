@@ -47,7 +47,7 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox, editTaskData }) => {
         setTaskDetails(prevState => {
             return {
                 ...prevState,
-                priorityTags: selectedPriority
+                priority: selectedPriority
             }
 
         }
@@ -161,8 +161,8 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox, editTaskData }) => {
                 <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"} fontFamily="Rubik">Priority</Typography>
 
                 <Stack direction="row" spacing={1}>
-                    <Chip label="High" name="priorityTag" onClick={handleSelectPriority} sx={{ fontFamily: "Rubik", color: "#f1f5f9", bgcolor: "red", borderRadius: "8px", height: "28px" }} />
-                    <Chip label="Medium" name="priorityTag" onClick={handleSelectPriority} sx={{ fontFamily: "Rubik", color: "#65a30d", bgcolor: "#d9f99d", borderRadius: "8px", height: "28px" }} />
+                    <Chip label="High" onClick={handleSelectPriority} sx={{ fontFamily: "Rubik", color: "#f1f5f9", bgcolor: "red", borderRadius: "8px", height: "28px" }} />
+                    <Chip label="Medium" onClick={handleSelectPriority} sx={{ fontFamily: "Rubik", color: "#65a30d", bgcolor: "#d9f99d", borderRadius: "8px", height: "28px" }} />
                 </Stack>
             </DialogContent>
 

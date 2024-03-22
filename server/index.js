@@ -11,12 +11,12 @@ app.use(express.json());
 
 // Adding a task to taskDetails collection/table
 app.post('/', (req, res) => {
-    const { taskName, assignDate, priorityTags } = req.body;
+    const { taskName, assignDate, priority } = req.body;
 
     let newTask = new taskDetails({
         taskName: taskName,
         assignDate: assignDate,
-        priority: priorityTags,
+        priority: priority,
 
     })
     newTask.save().then((task) => {
@@ -41,6 +41,7 @@ app.get('/task', async (req, res) => {
 app.put("/update/:id", async (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;
+
     try {
         const data = await taskDetails.findByIdAndUpdate(id, updatedData, { new: true });
         res.json({ success: true, message: "Successfully updated", data });

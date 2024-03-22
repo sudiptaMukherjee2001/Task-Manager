@@ -5,6 +5,6 @@ export const updateTask = async (id, updatedData) => {
     // const data = await axios.put("http://localhost:8000/update",updatedData)
     const data = await axios.put(`http://localhost:8000/update/${id}`, updatedData);
 
-    return data
+    return data;
 
 }

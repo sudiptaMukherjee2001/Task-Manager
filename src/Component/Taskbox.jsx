@@ -9,6 +9,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 /* Components imports */
 import DialogBox from './DialogBox';
+import { deleteTask } from '../utils/lib/deleteTask';
 /* Api  service imports */
 // eslint-disable-next-line react/prop-types
 const Taskbox = ({ allTaskSection, data, tasks }) => {
@@ -17,10 +18,14 @@ const Taskbox = ({ allTaskSection, data, tasks }) => {
 
 
 
-    const handleClickOpenDialogBox = (id) => {
-        console.log("This id", id);
+    const handleClickOpenDialogBox = () => {
+
         setOpenDialogBox(true);
     };
+    const handelDeleteTask = (id) => {
+        deleteTask(id)
+
+    }
     const open = Boolean(anchorEl);
     const handleOpenMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -72,8 +77,8 @@ const Taskbox = ({ allTaskSection, data, tasks }) => {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={() => handleClickOpenDialogBox(data._id)}>Edit</MenuItem>
-                <MenuItem >Delete</MenuItem>
+                <MenuItem onClick={handleClickOpenDialogBox}>Edit</MenuItem>
+                <MenuItem onClick={() => handelDeleteTask(data._id)}>Delete</MenuItem>
             </Menu>
             <DialogBox openDialogBox={openDialogBox} setOpenDialogBox={setOpenDialogBox} editTaskData={data} />
         </TaskBox>
