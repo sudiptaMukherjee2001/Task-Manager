@@ -110,7 +110,12 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox, editTaskData }) => {
                             borderColor: "#0f172a !important",
                         },
                     }}>
-                    <Typography fontSize={"1.1rem"} fontFamily="Rubik" fontWeight={600} color="#0f172a" >Add task</Typography>
+                    <Typography fontSize={"1.1rem"} fontFamily="Rubik" fontWeight={600} color="#0f172a" >
+                        {
+                            editTaskData?._id ? "Save Task" : "Add Task"
+                        }
+
+                    </Typography>
                 </Button>
             </Box>
             <DialogContent dividers>
