@@ -1,5 +1,5 @@
 /* React imports */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 /* Mui imports */
 import {
@@ -15,27 +15,36 @@ import {
 } from '@mui/material'
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { storeAllTask } from '../utils/lib/PostTask';
+import { updateTask } from '../utils/lib/updateTask';
 
 // eslint-disable-next-line react/prop-types
-const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
-    const [taskDetails, settaskDetails] = useState({});// we  will store task details here. and we have to send this task value to database
+const DialogBox = ({ openDialogBox, setOpenDialogBox, editTaskData }) => {
+    const [taskDetails, setTaskDetails] = useState({});// we  will store task details here. and we have to send this task value to database
 
+    console.log("editTaskData", editTaskData)
+    useEffect(() => {
+        if (editTaskData) {
+            setTaskDetails({
+                taskName: editTaskData.taskName || '',
+                assignDate: editTaskData.assignDate || '',
+                priorityTags: editTaskData.priority || ''
+            });
+        }
+    }, [editTaskData]);
     const handelGetTaskInput = (e) => {
-        settaskDetails({
+        setTaskDetails({
             ...taskDetails,
             [e.target.name]: e.target.value,
-
-
-
         })
 
     }
     const handleSelectPriority = (e) => {
         // console.log("Envet", e);
         const selectedPriority = e.target.innerText;
-        console.log("selectedPriority:", selectedPriority);
+        // console.log("selectedPriority:", typeof e.target.innerText);
         // Update the priorityTags portion of taskDetails
-        settaskDetails(prevState => {
+        setTaskDetails(prevState => {
             return {
                 ...prevState,
                 priorityTags: selectedPriority
@@ -49,10 +58,19 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
     const handleCloseDialogBox = () => {
         setOpenDialogBox(false);
     };
+    /* This func is responsible  for storing task into db*/
+    const storeTaskInfo = () => {
+        if (editTaskData) {
+            updateTask(editTaskData._id, taskDetails)
+            console.log("inside");
+        }
+        else {
+            console.log("outdie if");
+            storeAllTask(taskDetails);
 
-
-    console.log("task details", taskDetails);
-
+        }
+    }
+    // console.log("this is taskDetails from dialog box", taskDetails);
     return (
         <Dialog
             className='test'
@@ -68,7 +86,6 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                         minWidth: '96vw',
                         maxHeight: '60vh',
                     }
-
                 }
 
             }}
@@ -82,20 +99,16 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                     <Typography fontSize={"1.1rem"} fontFamily="Rubik" fontWeight={600} color="#0f172a" >Cancel</Typography>
                 </Button>
                 <Button variant="outlined" disableFocusRipple={true} disableRipple={true}
+                    onClick={storeTaskInfo}
                     sx={{
                         position: 'absolute',
                         right: 8,
                         top: 8,
                         border: "1px solid #0f172a !important",
                         paddingInline: "2rem",
-
                         "&:hover": { // Apply hover effect directly to the Button
                             borderColor: "#0f172a !important",
-
                         },
-
-
-
                     }}>
                     <Typography fontSize={"1.1rem"} fontFamily="Rubik" fontWeight={600} color="#0f172a" >Add task</Typography>
                 </Button>
@@ -121,6 +134,9 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                     helperText="*Enter your task"
                     fullWidth
                     focused
+                    value={taskDetails.taskName}
+
+
                 />
                 <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"} fontFamily="Rubik">Assign Date and time</Typography>
                 <TextField variant="outlined" size='small' name='assignDate' onChange={handelGetTaskInput}
@@ -139,6 +155,8 @@ const DialogBox = ({ openDialogBox, setOpenDialogBox }) => {
                     helperText="*Enter  due date and time"
                     fullWidth
                     focused
+                    value={taskDetails.assignDate}
+
                 />
                 <Typography variant="h6" color="#0f172a" mb={"0.2rem"} mt={"1rem"} fontFamily="Rubik">Priority</Typography>
 

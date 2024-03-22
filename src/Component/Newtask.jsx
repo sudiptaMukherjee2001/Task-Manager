@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 /* Component imports */
 import Taskbox from './Taskbox'
 /* Mui imports */
 import { Grid, Typography } from '@mui/material'
-
+import { getAllTask } from '../utils/lib/getAllTask'
+// eslint-disable-next-line react/prop-types
 const Newtask = ({ allTaskSection, componentTitle }) => {
+    const [tasks, setTasks] = useState([]);
+    const fetchTasks = async () => {
+        const fetchedTask = await getAllTask();
+        setTasks(fetchedTask)
+    }
+    useEffect(() => {
+        fetchTasks();
+        return () => { fetchTasks() }
+    }, [])
+
     return (
         <>
             <Grid container mb={"1rem"}>
@@ -13,177 +24,18 @@ const Newtask = ({ allTaskSection, componentTitle }) => {
                 </Grid>
             </Grid>
             <Grid container height={"100%"} columnGap={"1rem"} rowGap={"1rem"} >
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} >
-                    <Taskbox allTaskSection={allTaskSection} />
-                </Grid>
+                {
+                    tasks.map((item, ind) => {
+
+                        return (
+
+                            <Grid item xs={12} sm={12} md={5} lg={5} key={ind}>
+                                <Taskbox allTaskSection={allTaskSection} tasks={tasks} data={item} />
+                            </Grid>
+                        )
+                    })
+
+                }
 
 
             </Grid>

@@ -32,7 +32,7 @@ export const TaskBox = styled(Box)({
         alignItems: "center",
         ".taskBoxHeaderTitle": {
             color: "#0f172a",
-            fontSize: "1.7rem",
+            fontSize: "1.2rem",
             marginBottom: "0.3rem",
 
         }
